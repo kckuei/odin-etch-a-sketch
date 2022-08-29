@@ -42,13 +42,13 @@ body {
 
 .cell:hover {
     box-shadow: 2.5px 5px #888888;
-    background-color: seagreen
+    background-color: seagreen;
 }
 
 #header {
     display: flex;
     width: 100%;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 #footer {

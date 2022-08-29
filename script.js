@@ -53,7 +53,7 @@ const grid = document.getElementById('grid');
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
-let mouseDown = 0;
+let mouseDown = 1;
 let gridSize = 16;
 let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
@@ -62,13 +62,13 @@ let elementSize = width / gridSize;
 newGrid.addEventListener('click', setGridSize)
 refresh.addEventListener('click', refreshCanvas)
 
-window.onmousedown = () => {
-    ++mouseDown;
-}
-window.onmouseup = () => {
-    --mouseDown;
-}
+// window.onmousedown = () => {
+//     ++mouseDown;
+// }
+// window.onmouseup = () => {
+//     --mouseDown;
+// }
 
 
-
+setGridSize()
 initializeCanvas()

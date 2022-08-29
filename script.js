@@ -5,8 +5,7 @@ function initializeCanvas(gridSize = 16) {
         grid.appendChild(row);
         for (let j = 0; j < gridSize; j++) {
             let cell = document.createElement('div');
-            // cell.innerHTML = 'x';
-            // cell.innerHTML = 'x';
+            // cell.innerHTML = `${i},${j}`;
             cell.style.display = 'inline-block';
             cell.style.height = `${elementSize}px`;
             cell.style.width = `${elementSize}px`;
@@ -23,7 +22,7 @@ function setGridSize() {
         response = parseInt(response);
     } while ((response < 0) || (response > 200))
     gridSize = response;
-    elementSize = width / gridSize
+    elementSize = width / gridSize;
     refreshCanvas();
 }
 
@@ -65,8 +64,8 @@ let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
 
-newGrid.addEventListener('click', setGridSize)
-refresh.addEventListener('click', refreshCanvas)
+newGrid.addEventListener('click', setGridSize);
+refresh.addEventListener('click', refreshCanvas);
 
-
-initializeCanvas()
+// setGridSize();
+initializeCanvas();

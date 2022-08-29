@@ -1,14 +1,3 @@
-const MAXGRIDSIZE = 100;
-
-const grid = document.getElementById("grid");
-const refresh = document.querySelector('#refresh-button');
-const newGrid = document.querySelector('#grid-button');
-
-let gridSize = 16;
-let style = getComputedStyle(grid);
-let width = parseInt(style.width.replace("px", ""));
-let elementSize = width / gridSize;
-
 function initializeCanvas(gridSize = 16) {
     for (let i = 0; i < gridSize; i++) {
         let row = document.createElement("div");
@@ -22,6 +11,7 @@ function initializeCanvas(gridSize = 16) {
             cell.style.height = `${elementSize}px`;
             cell.style.width = `${elementSize}px`;
             cell.className = 'cell';
+            cell.addEventListener('mouseover', fillCell)
             row.appendChild(cell);
         }
     }
@@ -49,6 +39,36 @@ function refreshCanvas() {
     initializeCanvas(gridSize);
 }
 
+
+function fillCell(e) {
+    // console.log(e);
+    if (mouseDown === 1) {
+        e.target.style.backgroundColor = 'red';
+    }
+}
+
+const MAXGRIDSIZE = 100;
+
+const grid = document.getElementById('grid');
+const refresh = document.querySelector('#refresh-button');
+const newGrid = document.querySelector('#grid-button');
+
+let mouseDown = 0;
+let gridSize = 16;
+let style = getComputedStyle(grid);
+let width = parseInt(style.width.replace('px', ''));
+let elementSize = width / gridSize;
+
 newGrid.addEventListener('click', setGridSize)
+refresh.addEventListener('click', refreshCanvas)
+
+window.onmousedown = () => {
+    ++mouseDown;
+}
+window.onmouseup = () => {
+    --mouseDown;
+}
+
+
 
 initializeCanvas()

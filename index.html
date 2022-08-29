@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="header">
+    <div id="header">
         <div class="logo">Etch-A-Sketch</div>
-        <input type="button" class="refresh" value="Refresh" />
-        <input type="button" class="grid" value="Grid" />
+        <input type="button" class="refresh-button" value="Refresh" />
+        <input type="button" class="grid-button" value="Grid" />
     </div>
-    <div class="container"></div>
-    <div class="footer"><img src="./images/small-odin.svg" class="odin">The Odin Project</div>
+    <div id="grid"></div>
+    <div id="footer"><img src="./images/small-odin.svg" class="odin">The Odin Project</div>
 </body>
 
 <style>
@@ -23,6 +24,7 @@
     body {
         padding: 0;
         margin: 0;
+        min-width: 960px;
     }
 
     body {
@@ -36,45 +38,55 @@
         margin: 10px;
     }
 
-    .refresh,
-    .grid {
+    .refresh-button,
+    .grid-button {
         margin: 5px;
         border-radius: 5px;
     }
 
-    .container {
+    .refresh-button {
+        margin-left: auto;
+    }
+
+    #grid {
+        width: 960px;
+        height: 960px;
         border: 2px solid lightgray;
     }
 
-    .header {
+    .row {
+        box-sizing: border-box;
+    }
+
+    .cell {
+        box-sizing: border-box;
+    }
+
+    .cell:hover {
+        /* box-shadow: 2.5px 5px #888888; */
+        background-color: seagreen
+    }
+
+    #header {
         display: flex;
         width: 100%;
         font-size: 20px;
     }
 
-    .footer {
+    #footer {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .header,
-    .footer {
+    #header,
+    #footer {
         background-color: lightslategrey;
     }
 
-    .refresh {
-        margin-left: auto;
-    }
-
-    .container {
-        width: 960px;
-        height: 960px;
-    }
-
-    input.refresh,
-    input.grid {
+    input.refresh-button,
+    input.grid-button {
         border: 2px solid black;
     }
 
@@ -83,6 +95,7 @@
         width: 3rem;
         margin: 1rem 1rem;
     }
+
 
     /* * {
         border: solid 1px red;

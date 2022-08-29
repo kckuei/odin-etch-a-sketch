@@ -39,12 +39,19 @@ function refreshCanvas() {
     initializeCanvas(gridSize);
 }
 
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 
 function fillCell(e) {
     // console.log(e);
-    if (mouseDown === 1) {
-        e.target.style.backgroundColor = 'red';
-    }
+    // if (e.which === 1) {
+    let r = randomInt(0, 255);
+    let g = randomInt(0, 255);
+    let b = randomInt(0, 255);
+    e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    // }
 }
 
 const MAXGRIDSIZE = 100;
@@ -53,7 +60,6 @@ const grid = document.getElementById('grid');
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
-let mouseDown = 1;
 let gridSize = 16;
 let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
@@ -62,13 +68,5 @@ let elementSize = width / gridSize;
 newGrid.addEventListener('click', setGridSize)
 refresh.addEventListener('click', refreshCanvas)
 
-// window.onmousedown = () => {
-//     ++mouseDown;
-// }
-// window.onmouseup = () => {
-//     --mouseDown;
-// }
 
-
-setGridSize()
 initializeCanvas()

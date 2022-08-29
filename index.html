@@ -12,8 +12,8 @@
 <body>
     <div id="header">
         <div class="logo">Etch-A-Sketch</div>
-        <input type="button" class="refresh-button" value="Refresh" />
-        <input type="button" class="grid-button" value="Grid" />
+        <input id="refresh-button" type="button" value="Refresh" />
+        <input id="grid-button" type="button" value="Grid" />
     </div>
     <div id="grid"></div>
     <div id="footer"><img src="./images/small-odin.svg" class="odin">The Odin Project</div>
@@ -38,13 +38,13 @@
         margin: 10px;
     }
 
-    .refresh-button,
-    .grid-button {
+    #refresh-button,
+    #grid-button {
         margin: 5px;
         border-radius: 5px;
     }
 
-    .refresh-button {
+    #refresh-button {
         margin-left: auto;
     }
 
@@ -63,7 +63,7 @@
     }
 
     .cell:hover {
-        /* box-shadow: 2.5px 5px #888888; */
+        box-shadow: 2.5px 5px #888888;
         background-color: seagreen
     }
 
@@ -83,11 +83,6 @@
     #header,
     #footer {
         background-color: lightslategrey;
-    }
-
-    input.refresh-button,
-    input.grid-button {
-        border: 2px solid black;
     }
 
     .odin {

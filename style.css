@@ -39,6 +39,10 @@ body {
     box-sizing: border-box;
 }
 
+.cell-grid {
+    border: 1px solid lightgrey;
+}
+
 .cell:hover {
     box-shadow: 2.5px 5px #888888;
     background-color: seagreen;

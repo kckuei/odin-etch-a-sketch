@@ -15,6 +15,7 @@ function initializeCanvas(gridSize = 16) {
             row.appendChild(cell);
         }
     }
+    cells = grid.getElementsByClassName('cell');
 }
 
 function setGridSize() {
@@ -29,7 +30,7 @@ function setGridSize() {
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
-        console.log(parent)
+        // console.log(parent)
         parent.removeChild(parent.firstChild);
     }
 }
@@ -50,11 +51,16 @@ function fillCell(e) {
         // let r = randomInt(0, 255);
         // let g = randomInt(0, 255);
         // let b = randomInt(0, 255);
-        rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
-        e.target.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+        if (eraseMode) {
+            e.target.style.backgroundColor = 'rgb(255,255,255)';
+        } else {
+            rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
+            e.target.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+        }
     }
 }
 
+// https://nicoguaro.github.io/posts/cyclic_colormaps/
 // https://krazydad.com/tutorials/makecolors.php
 let colorIndex = 0;
 
@@ -87,9 +93,39 @@ let gridSize = 16;
 let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
+let cells;
 
 newGrid.addEventListener('click', setGridSize);
 refresh.addEventListener('click', refreshCanvas);
+
+// hot keys
+let eraseMode = false;
+let gridMode = false;
+window.addEventListener('keydown', checkHotKeys);
+
+function checkHotKeys(e) {
+    console.log(e);
+    if (e.key === 'e') toggleEraser();
+    if (e.key === 'g') toggleGrid();
+}
+
+function toggleEraser() {
+    if (eraseMode) {
+        eraseMode = false
+    } else {
+        eraseMode = true;
+    }
+}
+
+function toggleGrid() {
+    if (gridMode) {
+        Array.from(cells).forEach(cell => cell.classList.remove('cell-grid'));
+        gridMode = false;
+    } else {
+        Array.from(cells).forEach(cell => cell.classList.add('cell-grid'));
+        gridMode = true;
+    }
+}
 
 // setGridSize();
 initializeCanvas();

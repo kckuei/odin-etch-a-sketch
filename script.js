@@ -12,6 +12,7 @@ function initializeCanvas(gridSize = 16) {
             cell.style.transitionDuration = '0.25s';
             cell.className = 'cell';
             cell.addEventListener('mouseover', fillCell)
+            cell.addEventListener('click', fillCell);
             row.appendChild(cell);
         }
     }

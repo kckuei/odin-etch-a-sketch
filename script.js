@@ -9,6 +9,7 @@ function initializeCanvas(gridSize = 16) {
             cell.style.display = 'inline-block';
             cell.style.height = `${elementSize}px`;
             cell.style.width = `${elementSize}px`;
+            cell.style.transitionDuration = '0.25s';
             cell.className = 'cell';
             cell.addEventListener('mouseover', fillCell)
             row.appendChild(cell);
@@ -45,13 +46,36 @@ function randomInt(min, max) {
 
 function fillCell(e) {
     // console.log(e);
-    // if (e.which === 1) {
-    let r = randomInt(0, 255);
-    let g = randomInt(0, 255);
-    let b = randomInt(0, 255);
-    e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-    // }
+    if (e.which === 1) {
+        // let r = randomInt(0, 255);
+        // let g = randomInt(0, 255);
+        // let b = randomInt(0, 255);
+        rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
+        e.target.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+    }
 }
+
+// https://krazydad.com/tutorials/makecolors.php
+let colorIndex = 0;
+
+function nextColorGradient(frequency1, frequency2, frequency3,
+    phase1, phase2, phase3,
+    center, width, len) {
+    if (center == undefined) center = 128;
+    if (width == undefined) width = 127;
+    if (len == undefined) len = 50;
+
+    let red = Math.sin(frequency1 * colorIndex + phase1) * width + center;
+    let grn = Math.sin(frequency2 * colorIndex + phase2) * width + center;
+    let blu = Math.sin(frequency3 * colorIndex + phase3) * width + center;
+    if (colorIndex > 50) {
+        colorIndex = 0;
+    }
+    colorIndex++;
+    return [red, grn, blu];
+}
+
+
 
 const MAXGRIDSIZE = 100;
 

@@ -2,7 +2,6 @@ html,
 body {
     padding: 0;
     margin: 0;
-    min-width: 960px;
 }
 
 body {
@@ -27,8 +26,8 @@ body {
 }
 
 #grid {
-    width: 960px;
-    height: 960px;
+    width: 500px;
+    height: 500px;
     border: 2px solid lightgray;
 }
 
@@ -43,6 +42,7 @@ body {
 .cell:hover {
     box-shadow: 2.5px 5px #888888;
     background-color: seagreen;
+    transition-duration: 1s;
 }
 
 #header {

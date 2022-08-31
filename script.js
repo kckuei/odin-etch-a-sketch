@@ -1,4 +1,7 @@
 function initializeCanvas(gridSize = 16) {
+    gridSize = parseInt(gridSlider.value);
+    elementSize = width / gridSize;
+
     for (let i = 0; i < gridSize; i++) {
         let row = document.createElement("div");
         row.style.height = `${elementSize}px`;
@@ -95,17 +98,13 @@ function nextColorGradient(frequency1, frequency2, frequency3,
     return [red, grn, blu];
 }
 
-
-
-const MAXGRIDSIZE = 100;
-
 const grid = document.getElementById('grid');
 const colorPicker = document.getElementById('colorpicker');
 const gridSlider = document.getElementById('slider')
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
-let gridSize = 16;
+let gridSize = parseInt(gridSlider.value);
 let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
@@ -114,13 +113,15 @@ let drawColor = '#ff0000';
 
 newGrid.addEventListener('click', setGridSizeFromPrompt);
 refresh.addEventListener('click', refreshCanvas);
-colorPicker.addEventListener('change', clickColor);
+colorPicker.addEventListener('change', pickColor);
 gridSlider.addEventListener('change', setGridSizeFromSlider)
 //onchange = "clickColor(0, -1, -1, 5)"
 
-function clickColor() {
+function pickColor() {
     drawColor = colorPicker.value;
-    console.log(drawColor);
+    monotoneMode = true;
+    rainbowMode = false;
+    // console.log(drawColor);
 }
 
 

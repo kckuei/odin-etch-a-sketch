@@ -116,6 +116,7 @@ function clickColor() {
 // hot keys
 let eraseMode = false;
 let gridMode = false;
+let monotoneMode = false;
 let rainbowMode = false;
 window.addEventListener('keydown', checkHotKeys);
 
@@ -123,6 +124,7 @@ function checkHotKeys(e) {
     console.log(e);
     if (e.key === 'e') toggleEraser();
     if (e.key === 'g') toggleGrid();
+    if (e.key === 'm') toggleMonotone();
     if (e.key === 'r') toggleRainbow();
 }
 
@@ -144,11 +146,21 @@ function toggleGrid() {
     }
 }
 
+function toggleMonotone() {
+    if (monotoneMode) {
+        monotoneMode = false
+    } else {
+        monotoneMode = true;
+        rainbowMode = false;
+    }
+}
+
 function toggleRainbow() {
     if (rainbowMode) {
         rainbowMode = false
     } else {
         rainbowMode = true;
+        monotoneMode = false;
     }
 }
 

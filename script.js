@@ -55,8 +55,12 @@ function fillCell(e) {
         if (eraseMode) {
             e.target.style.backgroundColor = 'rgb(255,255,255)';
         } else {
-            rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
-            e.target.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+            if (rainbowMode) {
+                rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
+                e.target.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+            } else {
+                e.target.style.backgroundColor = drawColor;
+            }
         }
     }
 }
@@ -87,6 +91,7 @@ function nextColorGradient(frequency1, frequency2, frequency3,
 const MAXGRIDSIZE = 100;
 
 const grid = document.getElementById('grid');
+const colorPicker = document.getElementById('colorpicker')
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
@@ -95,19 +100,30 @@ let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
 let cells;
+let drawColor = '#ff0000';
 
 newGrid.addEventListener('click', setGridSize);
 refresh.addEventListener('click', refreshCanvas);
+colorPicker.addEventListener('change', clickColor)
+//onchange = "clickColor(0, -1, -1, 5)"
+
+function clickColor() {
+    drawColor = colorPicker.value;
+    console.log(drawColor);
+}
+
 
 // hot keys
 let eraseMode = false;
 let gridMode = false;
+let rainbowMode = false;
 window.addEventListener('keydown', checkHotKeys);
 
 function checkHotKeys(e) {
     console.log(e);
     if (e.key === 'e') toggleEraser();
     if (e.key === 'g') toggleGrid();
+    if (e.key === 'r') toggleRainbow();
 }
 
 function toggleEraser() {
@@ -125,6 +141,14 @@ function toggleGrid() {
     } else {
         Array.from(cells).forEach(cell => cell.classList.add('cell-grid'));
         gridMode = true;
+    }
+}
+
+function toggleRainbow() {
+    if (rainbowMode) {
+        rainbowMode = false
+    } else {
+        rainbowMode = true;
     }
 }
 

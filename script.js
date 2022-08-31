@@ -13,18 +13,27 @@ function initializeCanvas(gridSize = 16) {
             cell.className = 'cell';
             cell.addEventListener('mouseover', fillCell)
             cell.addEventListener('click', fillCell);
+            if (gridMode) {
+                cell.classList.add('cell-grid');
+            }
             row.appendChild(cell);
         }
     }
     cells = grid.getElementsByClassName('cell');
 }
 
-function setGridSize() {
+function setGridSizeFromPrompt() {
     do {
         response = prompt('Choose a grid-size:', 16);
         response = parseInt(response);
-    } while ((response < 0) || (response > 200))
+    } while ((response < 0) || (response > 50))
     gridSize = response;
+    elementSize = width / gridSize;
+    refreshCanvas();
+}
+
+function setGridSizeFromSlider() {
+    gridSize = parseInt(gridSlider.value);
     elementSize = width / gridSize;
     refreshCanvas();
 }
@@ -91,7 +100,8 @@ function nextColorGradient(frequency1, frequency2, frequency3,
 const MAXGRIDSIZE = 100;
 
 const grid = document.getElementById('grid');
-const colorPicker = document.getElementById('colorpicker')
+const colorPicker = document.getElementById('colorpicker');
+const gridSlider = document.getElementById('slider')
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
@@ -102,9 +112,10 @@ let elementSize = width / gridSize;
 let cells;
 let drawColor = '#ff0000';
 
-newGrid.addEventListener('click', setGridSize);
+newGrid.addEventListener('click', setGridSizeFromPrompt);
 refresh.addEventListener('click', refreshCanvas);
-colorPicker.addEventListener('change', clickColor)
+colorPicker.addEventListener('change', clickColor);
+gridSlider.addEventListener('change', setGridSizeFromSlider)
 //onchange = "clickColor(0, -1, -1, 5)"
 
 function clickColor() {
@@ -121,7 +132,7 @@ let rainbowMode = false;
 window.addEventListener('keydown', checkHotKeys);
 
 function checkHotKeys(e) {
-    console.log(e);
+    // console.log(e);
     if (e.key === 'e') toggleEraser();
     if (e.key === 'g') toggleGrid();
     if (e.key === 'm') toggleMonotone();

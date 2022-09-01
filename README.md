@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Etch-A-Sketch
 Toy etch-a-sketch project using vanilla `JavaScript`, `HTML`, and `CSS`, as part of the Odin Project Foundations lesson. Live demo [hero](#).
 

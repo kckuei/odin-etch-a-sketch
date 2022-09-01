@@ -1,11 +1,11 @@
 // document pointers
 const grid = document.getElementById('grid');
 const colorPicker = document.getElementById('colorpicker');
-const gridSlider = document.getElementById('slider');
-const rainbow = document.getElementById('rainbow');
-const monotone = document.getElementById('monotone');
-const erase = document.getElementById('erase');
-const gridlines = document.getElementById('gridlines');
+const gridSlider = document.getElementById('grid-slider');
+const monochromeToggle = document.getElementById('monochrome-toggle');
+const rainbowToggle = document.getElementById('rainbow-toggle');
+const eraseToggle = document.getElementById('erase-toggle');
+const gridlinesToggle = document.getElementById('gridlines-toggle');
 const refresh = document.getElementById('refresh-button');
 const newGrid = document.getElementById('grid-button');
 
@@ -15,12 +15,12 @@ let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
 let cells;
-let drawColor = '#ff0000'
+let drawColor = colorPicker.value;
 
 // hot key state variables
 let eraseMode = false;
 let gridMode = false;
-let monotoneMode = false;
+let monochromeMode = false;
 let rainbowMode = false;
 
 // sets event listeners
@@ -28,14 +28,14 @@ newGrid.addEventListener('click', setGridSizeFromPrompt);
 refresh.addEventListener('click', refreshCanvas);
 colorPicker.addEventListener('change', pickColor);
 gridSlider.addEventListener('change', setGridSizeFromSlider);
-rainbow.addEventListener('click', toggleRainbow);
-monotone.addEventListener('click', toggleMonotone);
-erase.addEventListener('click', toggleEraser);
-gridlines.addEventListener('click', toggleGrid);
+monochromeToggle.addEventListener('change', toggleMonochrome);
+rainbowToggle.addEventListener('change', toggleRainbow);
+eraseToggle.addEventListener('change', toggleEraser);
+gridlinesToggle.addEventListener('change', toggleGrid);
 window.addEventListener('keydown', checkHotKeys);
 
 
-function initializeCanvas(gridSize = 25) {
+function initializeCanvas(gridSize = 20) {
 
     for (let row = 0; row < gridSize; row++) {
 
@@ -82,7 +82,7 @@ function fillCell(e) {
     let mouseIsDown = (e.which === 1);
     if (mouseIsDown) {
         if (eraseMode) {
-            e.target.style.backgroundColor = 'rgb(255,255,255)';
+            e.target.style.backgroundColor = 'white';
         } else {
             if (rainbowMode) {
                 rgb = nextColorGradient(.3, .3, .3, 0, 2, 4)
@@ -119,8 +119,9 @@ function nextColorGradient(frequency1, frequency2, frequency3,
 
 function pickColor() {
     drawColor = colorPicker.value;
-    monotoneMode = true;
+    monochromeMode = true;
     rainbowMode = false;
+    eraseMode = false;
 }
 
 
@@ -147,17 +148,55 @@ function setGridSizeFromSlider() {
 // hot key callbacks
 
 function checkHotKeys(e) {
+    if (e.key === 'c') refreshCanvas();
     if (e.key === 'e') toggleEraser();
     if (e.key === 'g') toggleGrid();
-    if (e.key === 'm') toggleMonotone();
+    if (e.key === 'm') toggleMonochrome();
     if (e.key === 'r') toggleRainbow();
+}
+
+
+function toggleMonochrome() {
+    eraseMode = false
+    eraseToggle.checked = false;
+    if (monochromeMode) {
+        monochromeMode = false
+        eraseToggle.checked = false;
+    } else {
+        monochromeMode = true;
+        monochromeToggle.checked = true;
+        rainbowMode = false;
+        rainbowToggle.checked = false;
+    }
+}
+
+function toggleRainbow() {
+    eraseMode = false
+    eraseToggle.checked = false;
+    if (rainbowMode) {
+        rainbowMode = false
+        rainbowToggle.checked = false;
+    } else {
+        rainbowMode = true;
+        rainbowToggle.checked = true;
+        monochromeMode = false;
+        monochromeToggle.checked = false;
+    }
 }
 
 function toggleEraser() {
     if (eraseMode) {
         eraseMode = false
+        eraseToggle.checked = false;
+        monochromeMode = true;
+        monochromeToggle.checked = true;
     } else {
         eraseMode = true;
+        eraseToggle.checked = true;
+        rainbowMode = false
+        rainbowToggle.checked = false;
+        monochromeMode = false;
+        monochromeToggle.checked = false;
     }
 }
 
@@ -165,29 +204,14 @@ function toggleGrid() {
     if (gridMode) {
         Array.from(cells).forEach(cell => cell.classList.remove('cell-grid'));
         gridMode = false;
+        gridlinesToggle.checked = false;
     } else {
         Array.from(cells).forEach(cell => cell.classList.add('cell-grid'));
         gridMode = true;
+        gridlinesToggle.checked = true;
     }
 }
 
-function toggleMonotone() {
-    if (monotoneMode) {
-        monotoneMode = false
-    } else {
-        monotoneMode = true;
-        rainbowMode = false;
-    }
-}
-
-function toggleRainbow() {
-    if (rainbowMode) {
-        rainbowMode = false
-    } else {
-        rainbowMode = true;
-        monotoneMode = false;
-    }
-}
 
 
 initializeCanvas(gridSize);

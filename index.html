@@ -13,21 +13,50 @@
 <body>
     <div id="header">
         <div class="logo">Etch-A-Sketch</div>
-        <input id="colorpicker" type="color" value="#ff0000">
-        <input id="monotone" type="button" value="Monotone">
-        <input id="rainbow" type="button" value="Rainbow">
-        <input id="erase" type="button" value="Erase">
-        <input id="gridlines" type="button" value="Gridlines">
-        <input id="refresh-button" type="button" value="Clear" />
-
-        <div class="slidecontainer">
-            <div>grid</div>
-            <input id="grid-button" type="button" value="Manual grid" />
-            <input type="range" min="2" max="50" value="25" class="slider" id="slider">
+    </div>
+    <div id="main">
+        <div id="grid"></div>
+        <div id="control-panel">
+            <input id="colorpicker" class="control" type="color" value="#473e3e">
+            <input id="refresh-button" class="control" type="button" value="Clear" />
+            <div class="row">
+                <label class="switch">
+                    <input type="checkbox" id="monochrome-toggle" checked>
+                    <span class="slider round"></span>
+                </label>
+                <div>Monochrome (M)</div>
+            </div>
+            <div class="row">
+                <label class="switch">
+                    <input type="checkbox" id="rainbow-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <div>Rainbow (R) </div>
+            </div>
+            <div class="row">
+                <label class="switch">
+                    <input type="checkbox" id="erase-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <div>Erase (E)</div>
+            </div>
+            <div class="row">
+                <label class="switch">
+                    <input type="checkbox" id="gridlines-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <div>Gridlines (G)</div>
+            </div>
+            <div class="slidecontainer">
+                <input id="grid-button" type="button" value="Manual grid" />
+                <input type="range" min="2" max="50" value="20" class="grid-slider" id="grid-slider">
+            </div>
         </div>
     </div>
-    <div id="grid"></div>
-    <div id="footer"><img src="./images/small-odin.svg" class="odin">The Odin Project</div>
+    </div>
+    <div id="footer">
+        <img src="./images/small-odin.svg" class="odin">The Odin Project
+    </div>
 </body>
 
 <style>

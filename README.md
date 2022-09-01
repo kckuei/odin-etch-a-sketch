@@ -28,7 +28,7 @@ Some future features that could be fun to work on/add:
 * Add a save canvas option
 * Add an eraser icon when erasing
 * Add a pixelated odin on page initiation
-* Add animations mode, for blocks to move away from cursor
+* Add animations flutter mode, for blocks to move away from cursor
 * Before any of the above, maybe see if we can write our code or optimize it to avoid hangups at higher resolutions
 * Create an object to store all the state variables
 * Refactor/re-organize the code to perhaps follow a functional or OOP paradigm

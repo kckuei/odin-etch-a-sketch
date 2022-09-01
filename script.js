@@ -55,7 +55,6 @@ function initializeCanvas(gridSize = 25) {
             div.appendChild(cell);
         }
     }
-    cell.style.transitionDuration = '0.25s';
     cells = grid.getElementsByClassName('cell');
 }
 

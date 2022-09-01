@@ -13,11 +13,14 @@
 <body>
     <div id="header">
         <div class="logo">Etch-A-Sketch</div>
-        <input id="refresh-button" type="button" value="Refresh" />
-        <input id="grid-button" type="button" value="Grid" />
-        <input type="color" id="colorpicker" value="#ff0000">
+        <input id="colorpicker" type="color" value="#ff0000">
+        <input id="monotone" type="button" value="Monotone">
+        <input id="rainbow" type="button" value="Rainbow">
+        <input id="refresh-button" type="button" value="Clear" />
 
         <div class="slidecontainer">
+            <div>grid</div>
+            <input id="grid-button" type="button" value="Manual grid" />
             <input type="range" min="2" max="50" value="25" class="slider" id="slider">
         </div>
     </div>

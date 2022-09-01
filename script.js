@@ -101,6 +101,8 @@ function nextColorGradient(frequency1, frequency2, frequency3,
 const grid = document.getElementById('grid');
 const colorPicker = document.getElementById('colorpicker');
 const gridSlider = document.getElementById('slider')
+const rainbow = document.getElementById('rainbow');
+const monotone = document.getElementById('monotone')
 const refresh = document.querySelector('#refresh-button');
 const newGrid = document.querySelector('#grid-button');
 
@@ -114,8 +116,10 @@ let drawColor = '#ff0000';
 newGrid.addEventListener('click', setGridSizeFromPrompt);
 refresh.addEventListener('click', refreshCanvas);
 colorPicker.addEventListener('change', pickColor);
-gridSlider.addEventListener('change', setGridSizeFromSlider)
-//onchange = "clickColor(0, -1, -1, 5)"
+gridSlider.addEventListener('change', setGridSizeFromSlider);
+rainbow.addEventListener('click', toggleRainbow);
+monotone.addEventListener('click', toggleMonotone);
+
 
 function pickColor() {
     drawColor = colorPicker.value;

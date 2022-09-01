@@ -1,11 +1,13 @@
 // document pointers
 const grid = document.getElementById('grid');
 const colorPicker = document.getElementById('colorpicker');
-const gridSlider = document.getElementById('slider')
+const gridSlider = document.getElementById('slider');
 const rainbow = document.getElementById('rainbow');
-const monotone = document.getElementById('monotone')
-const refresh = document.querySelector('#refresh-button');
-const newGrid = document.querySelector('#grid-button');
+const monotone = document.getElementById('monotone');
+const erase = document.getElementById('erase');
+const gridlines = document.getElementById('gridlines');
+const refresh = document.getElementById('refresh-button');
+const newGrid = document.getElementById('grid-button');
 
 // drawing state variables
 let gridSize = parseInt(gridSlider.value);
@@ -28,6 +30,8 @@ colorPicker.addEventListener('change', pickColor);
 gridSlider.addEventListener('change', setGridSizeFromSlider);
 rainbow.addEventListener('click', toggleRainbow);
 monotone.addEventListener('click', toggleMonotone);
+erase.addEventListener('click', toggleEraser);
+gridlines.addEventListener('click', toggleGrid);
 window.addEventListener('keydown', checkHotKeys);
 
 

@@ -27,12 +27,15 @@ function initializeCanvas(gridSize = 16) {
 
 function setGridSizeFromPrompt() {
     do {
-        response = prompt('Choose a grid-size:', 16);
+        response = prompt('Choose a grid-size:', gridSize);
         response = parseInt(response);
+        console.log(response)
     } while ((response < 0) || (response > 50))
-    gridSize = response;
-    elementSize = width / gridSize;
-    refreshCanvas();
+    if (!isNaN(response)) {
+        gridSize = response;
+        elementSize = width / gridSize;
+        refreshCanvas();
+    }
 }
 
 function setGridSizeFromSlider() {
@@ -111,7 +114,7 @@ let style = getComputedStyle(grid);
 let width = parseInt(style.width.replace('px', ''));
 let elementSize = width / gridSize;
 let cells;
-let drawColor = '#ff0000';
+let drawColor = '#ff0000'
 
 newGrid.addEventListener('click', setGridSizeFromPrompt);
 refresh.addEventListener('click', refreshCanvas);

@@ -77,7 +77,7 @@ body {
     display: flex;
     width: 100%;
     font-size: 1.5rem;
-    margin-bottom: auto;
+    /* margin-bottom: auto; */
 }
 
 
@@ -94,7 +94,7 @@ body {
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 .odin {
@@ -107,6 +107,9 @@ body {
 #footer {
     background-color: lightslategrey;
     color: white;
+    /* as an alternative to footer and headers pushed to edges */
+    max-width: 800px;
+    margin: 1rem;
 }
 
 

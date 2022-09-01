@@ -130,7 +130,6 @@ function setGridSizeFromPrompt() {
     do {
         response = prompt('Choose a grid-size:', gridSize);
         response = parseInt(response);
-        console.log(response)
     } while ((response < 0) || (response > 50))
     if (!isNaN(response)) {
         gridText.innerText = `Grid Size: ${gridSize} x ${gridSize}`;
@@ -141,7 +140,6 @@ function setGridSizeFromPrompt() {
 }
 
 function setGridSizeFromSlider() {
-    console.log(gridText.innerText)
     gridText.innerText = `Grid Size: ${gridSize} x ${gridSize}`;
     gridSize = parseInt(gridSlider.value);
     elementSize = width / gridSize;

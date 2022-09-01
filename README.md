@@ -3,6 +3,7 @@ Toy *Etch-A-Sketch* project using vanilla `JavaScript`, `HTML`, and `CSS`, as pa
 
 ### Features
 V2 of *Etch-A-Sketch* features:
+* Hotkeys!
 * Pick your color of choice!
 * Draw in monochrome colors!
 * Draw in rainbow mode!
@@ -32,3 +33,6 @@ Some future features that could be fun to work on/add:
 * Before any of the above, maybe see if we can write our code or optimize it to avoid hangups at higher resolutions
 * Create an object to store all the state variables
 * Refactor/re-organize the code to perhaps follow a functional or OOP paradigm
+
+### Note to Self
+* Pushing the headers and footers to the edges with margin-top/bottom seems to mess with the drawing responsiveness

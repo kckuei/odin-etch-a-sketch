@@ -1,5 +1,5 @@
 # Etch-A-Sketch
-Toy *Etch-A-Sketch* project using vanilla `JavaScript`, `HTML`, and `CSS`, as part of the Odin Project Foundations lesson. Live demo [hero](#).
+Toy *Etch-A-Sketch* project using vanilla `JavaScript`, `HTML`, and `CSS`, as part of the Odin Project Foundations lesson. Live demo [hero](https://kckuei.github.io/odin-etch-a-sketch/).
 
 ### Features
 V2 of *Etch-A-Sketch* features:

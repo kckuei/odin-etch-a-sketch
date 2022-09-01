@@ -7,6 +7,7 @@ const eraseToggle = document.getElementById('erase-toggle');
 const gridlinesToggle = document.getElementById('gridlines-toggle');
 const clear = document.getElementById('clear-button');
 const gridSlider = document.getElementById('grid-slider');
+const gridText = document.getElementById('grid-text');
 // const newGrid = document.getElementById('grid-button');
 
 // drawing state variables
@@ -132,6 +133,7 @@ function setGridSizeFromPrompt() {
         console.log(response)
     } while ((response < 0) || (response > 50))
     if (!isNaN(response)) {
+        gridText.innerText = `Grid Size: ${gridSize} x ${gridSize}`;
         gridSize = response;
         elementSize = width / gridSize;
         clearCanvas();
@@ -139,6 +141,8 @@ function setGridSizeFromPrompt() {
 }
 
 function setGridSizeFromSlider() {
+    console.log(gridText.innerText)
+    gridText.innerText = `Grid Size: ${gridSize} x ${gridSize}`;
     gridSize = parseInt(gridSlider.value);
     elementSize = width / gridSize;
     clearCanvas();
@@ -176,6 +180,8 @@ function toggleRainbow() {
     if (rainbowMode) {
         rainbowMode = false
         rainbowToggle.checked = false;
+        monochromeMode = true;
+        monochromeToggle.checked = true;
     } else {
         rainbowMode = true;
         rainbowToggle.checked = true;

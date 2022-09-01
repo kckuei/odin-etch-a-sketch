@@ -12,14 +12,15 @@
 
 <body>
     <div id="header">
-        <div class="logo">Etch-A-Sketch</div>
+        <div id="logo">Etch-A-Sketch</div>
     </div>
     <div id="main">
         <div id="grid"></div>
         <div id="control-panel">
-            <input id="colorpicker" class="control" type="color" value="#473e3e">
-            <input id="clear-button" class="control" type="button" value="Clear" />
-
+            <div class="row">
+                <input id="colorpicker" class="control" type="color" value="#473e3e">
+                <input id="clear-button" class="control" type="button" value="Clear (C)" />
+            </div>
             <div class="row">
                 <label class="switch">
                     <input type="checkbox" id="monochrome-toggle" checked>
@@ -50,7 +51,7 @@
             </div>
             <div class="slidecontainer">
                 <!-- <input id="grid-button" type="button" value="Manual grid" /> -->
-                <div id="grid-text"></div>
+                <div id="grid-text">Grid Size: 20 x 20</div>
                 <input id="grid-slider" class="grid-slider" type="range" min="2" max="50" value="20">
             </div>
         </div>

@@ -9,30 +9,42 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* max-width: 820px; */
+    font-family: sans-serif;
 }
 
 #main {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #control-panel {
+    margin-left: 1em;
     display: flex;
     flex-direction: column;
-}
-
-.logo {
-    margin: 10px;
-}
-
-#clear-button,
-#grid-button {
-    margin: 5px;
-    border-radius: 5px;
+    justify-content: center;
+    gap: 1.5em;
 }
 
 #clear-button {
-    margin-left: auto;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    padding: 0.8em 1.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
+
+#clear-button:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+/* GRID AND ROW STYLING */
 
 #grid {
     width: 500px;
@@ -54,10 +66,11 @@ body {
 
 .cell:hover {
     box-shadow: 2.5px 5px #888888;
-    border: 1px solid lightgrey;
-    /* background-color: seagreen; */
+    background-color: lightgrey;
     transition-duration: 1s;
 }
+
+/* HEADER AND FOOTER */
 
 #header {
     display: flex;
@@ -65,17 +78,20 @@ body {
     font-size: 1.5rem;
 }
 
+
+#logo {
+    margin: 10px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
 #footer {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#header,
-#footer {
-    background-color: lightslategrey;
-    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .odin {
@@ -84,10 +100,35 @@ body {
     margin: 1rem 1rem;
 }
 
+#header,
+#footer {
+    background-color: lightslategrey;
+    color: white;
+}
 
-/* * {
-    border: solid 1px red;
-} */
+
+/* COLOR SELECTOR */
+
+#colorpicker {
+    border-radius: 0.5rem;
+    height: 5rem;
+    width: 5rem;
+    padding: 0.2rem;
+}
+
+/* GRID SLIDER */
+#grid-slider {
+    width: 100%;
+}
+
+#grid-text {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+
+
+/* TOGGLE SPACING AND LAYOUT */
 
 .row {
     display: flex;
@@ -95,8 +136,12 @@ body {
     gap: 2em;
 }
 
-/* Toggle Switch styling */
+.row div {
+    font-size: 1.5rem;
+}
 
+
+/* TOGGLE SWITCHES */
 
 .switch {
     position: relative;
@@ -157,3 +202,9 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+
+
+/* * {
+    border: solid 1px red;
+} */

@@ -1,13 +1,13 @@
-// document pointers
+// document poclearinters
 const grid = document.getElementById('grid');
 const colorPicker = document.getElementById('colorpicker');
-const gridSlider = document.getElementById('grid-slider');
 const monochromeToggle = document.getElementById('monochrome-toggle');
 const rainbowToggle = document.getElementById('rainbow-toggle');
 const eraseToggle = document.getElementById('erase-toggle');
 const gridlinesToggle = document.getElementById('gridlines-toggle');
-const refresh = document.getElementById('refresh-button');
-const newGrid = document.getElementById('grid-button');
+const clear = document.getElementById('clear-button');
+const gridSlider = document.getElementById('grid-slider');
+// const newGrid = document.getElementById('grid-button');
 
 // drawing state variables
 let gridSize = parseInt(gridSlider.value);
@@ -24,8 +24,7 @@ let monochromeMode = false;
 let rainbowMode = false;
 
 // sets event listeners
-newGrid.addEventListener('click', setGridSizeFromPrompt);
-refresh.addEventListener('click', refreshCanvas);
+clear.addEventListener('click', clearCanvas);
 colorPicker.addEventListener('change', pickColor);
 gridSlider.addEventListener('change', setGridSizeFromSlider);
 monochromeToggle.addEventListener('change', toggleMonochrome);
@@ -33,6 +32,7 @@ rainbowToggle.addEventListener('change', toggleRainbow);
 eraseToggle.addEventListener('change', toggleEraser);
 gridlinesToggle.addEventListener('change', toggleGrid);
 window.addEventListener('keydown', checkHotKeys);
+// newGrid.addEventListener('click', setGridSizeFromPrompt);
 
 
 function initializeCanvas(gridSize = 20) {
@@ -68,7 +68,7 @@ function removeAllChildNodes(parent) {
     }
 }
 
-function refreshCanvas() {
+function clearCanvas() {
     removeAllChildNodes(grid);
     initializeCanvas(gridSize);
 }
@@ -134,21 +134,21 @@ function setGridSizeFromPrompt() {
     if (!isNaN(response)) {
         gridSize = response;
         elementSize = width / gridSize;
-        refreshCanvas();
+        clearCanvas();
     }
 }
 
 function setGridSizeFromSlider() {
     gridSize = parseInt(gridSlider.value);
     elementSize = width / gridSize;
-    refreshCanvas();
+    clearCanvas();
 }
 
 
 // hot key callbacks
 
 function checkHotKeys(e) {
-    if (e.key === 'c') refreshCanvas();
+    if (e.key === 'c') clearCanvas();
     if (e.key === 'e') toggleEraser();
     if (e.key === 'g') toggleGrid();
     if (e.key === 'm') toggleMonochrome();

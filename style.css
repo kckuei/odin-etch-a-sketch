@@ -24,13 +24,13 @@ body {
     margin: 10px;
 }
 
-#refresh-button,
+#clear-button,
 #grid-button {
     margin: 5px;
     border-radius: 5px;
 }
 
-#refresh-button {
+#clear-button {
     margin-left: auto;
 }
 

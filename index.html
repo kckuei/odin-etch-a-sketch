@@ -18,7 +18,8 @@
         <div id="grid"></div>
         <div id="control-panel">
             <input id="colorpicker" class="control" type="color" value="#473e3e">
-            <input id="refresh-button" class="control" type="button" value="Clear" />
+            <input id="clear-button" class="control" type="button" value="Clear" />
+
             <div class="row">
                 <label class="switch">
                     <input type="checkbox" id="monochrome-toggle" checked>
@@ -48,8 +49,9 @@
                 <div>Gridlines (G)</div>
             </div>
             <div class="slidecontainer">
-                <input id="grid-button" type="button" value="Manual grid" />
-                <input type="range" min="2" max="50" value="20" class="grid-slider" id="grid-slider">
+                <!-- <input id="grid-button" type="button" value="Manual grid" /> -->
+                <div id="grid-text"></div>
+                <input id="grid-slider" class="grid-slider" type="range" min="2" max="50" value="20">
             </div>
         </div>
     </div>
